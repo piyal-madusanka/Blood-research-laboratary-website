@@ -1,3 +1,7 @@
+<?php 
+session_start();
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +44,7 @@
         aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
       
       </button>
-      <a class="navbar-brand" href="index.html"><img src="logo1.png" alt="Logo"></a>
+      <a class="navbar-brand" href="../index.php"><img src="logo1.png" alt="Logo"></a>
       <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
         data-target="#navbarTogglerDemo01" aria-expanded="false">
         <span class="fa fa-search" aria-hidden="true"></span>
@@ -92,7 +96,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="prepare-test.php">Serology</a>
-              <a class="dropdown-item" href="#">Microbiology</a>
+              <a class="dropdown-item" href="prepare-test2.php">Microbiology</a>
              
           </div>
           </li>
@@ -109,8 +113,36 @@
           </div>
           </li>
 
+           <li class="nav-item dropdown">
+            <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <?php 
+              if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]!='')
+                      {
+                       echo '<h6>'.$_SESSION["logged_in"].'</h6>';
+                      }
+              ?>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../profile.php">visit profile</a>
+              <a class="dropdown-item" href="../logout.php">logout</a>
+             
+          </div>
+          </li>
+
           <li class="nav-item ">
-            <a href="../log/index.php" class="btn btn-primary">Sign in</a>
+              <?php 
+                      if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]!=''){ // I use false condition
+                        echo '<a href="../logout.php"><button class="btn btn-danger">Sign out</button></a>';
+                     }else{
+
+                        echo '<a href="../log/index.php"><button class="btn btn-primary">Sign in</button></a>';
+                     }
+
+
+                          ?>
+
+            
       
           </li>
           

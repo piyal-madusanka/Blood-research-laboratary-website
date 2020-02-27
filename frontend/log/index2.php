@@ -1,3 +1,8 @@
+
+<?php
+session_start();
+  ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,36 +37,52 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="../code.php" method="POST">
 					<span class="login100-form-title p-b-43">
+						<?php  
+						if(isset($_SESSION["not_user"]) && $_SESSION["not_user"]!='')
+                                   {
+      
+                                   echo '<h2 class"bg-info">'.$_SESSION["not_user"].'</h2>';
+                                   unset($_SESSION["not_user"]);  
+                                  }   
+                        if(isset($_SESSION["password_error"]) && $_SESSION["password_error"]!='')
+                                   {
+      
+                                   echo '<h2 class"bg-info">'.$_SESSION["password_error"].'</h2>';
+                                   unset($_SESSION["password_error"]);  
+                                  }   
+                      ?>
 						Create new Account
 					</span>
 					
 					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="text">
+						<input class="input100" type="text" name="first_name">
 						<span class="focus-input100"></span>
 						<span class="label-input100">first name</span>
 					</div>	
+				
 					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="text">
+						<input class="input100" type="text" name="last_name">
 						<span class="focus-input100"></span>
 						<span class="label-input100">last name</span>
-					</div>	
+					</div>
+
                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email">
+						<input class="input100" type="email" name="email">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Email</span>
 					</div>
 					
 					
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass">
+						<input class="input100" type="password" name="password">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Password</span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass">
+						<input class="input100" type="password" name="password2">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Re Enter Password</span>
 					</div>
@@ -73,7 +94,7 @@
 			
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit" name="registerbtn">
 							Create 
 						</button>
 					</div>

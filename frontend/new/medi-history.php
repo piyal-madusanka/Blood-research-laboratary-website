@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,13 +35,13 @@
  
 
   <!--/ Nav Star /-->
-  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+ <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
     <div class="container">
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
         aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
       
       </button>
-      <a class="navbar-brand" href="index.html"><img src="logo1.png" alt="Logo"></a>
+      <a class="navbar-brand" href="../index.php"><img src="logo1.png" alt="Logo"></a>
       <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
         data-target="#navbarTogglerDemo01" aria-expanded="false">
         <span class="fa fa-search" aria-hidden="true"></span>
@@ -92,13 +93,38 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="prepare-test.php">Serology</a>
-              <a class="dropdown-item" href="#">Microbiology</a>
+              <a class="dropdown-item" href="prepare-test2.php">Microbiology</a>
              
           </div>
           </li>
            
-          <li class="nav-item">
-            <a class="nav-link" href="../contact.php">Contact</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+     Contact us
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../contact.php">send message</a>
+              <a class="dropdown-item" href="../feedback/feedback.php">send feedback</a>
+             
+          </div>
+          </li>
+
+           <li class="nav-item dropdown">
+            <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <?php 
+              if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]!='')
+                      {
+                       echo '<h6>'.$_SESSION["logged_in"].'</h6>';
+                      }
+              ?>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../profile.php">visit profile</a>
+              <a class="dropdown-item" href="../logout.php">logout</a>
+             
+          </div>
           </li>
 
           <li class="nav-item ">
@@ -116,7 +142,12 @@
 
 
 <hr style="   border-top: 3px double #8c8b8b;">
-  <div></div>
+  <div><?php 
+              if(isset($_SESSION["not_working"]) && $_SESSION["not_working"]!='')
+                      {
+                       echo '<h6>'.$_SESSION["not_working"].'</h6>';
+                      }
+          ?></div>
   <br>
   <br>
   <br>
@@ -128,22 +159,16 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Medical history form</h5>
-  <form class="form-signin">
-  <form>
+  <form class="form-signin" action="../code.php" method="POST">
+
        
  
-  <div class="form-group">
-    <label for="inputName" style="color: black;">Full Name</label>
-    <input type="text-area" class="form-control" id="inputName" placeholder="name">
-  </div>
-  <div class="form-group">
-    <label for="inputNumber" style="color: black;">Phone Number</label>
-    <input type="text-area" class="form-control" id="inputNumber" placeholder="number">
-  </div>
+ 
+ 
   <div class="form-group">
     <label for="input-test" style="color: black;">Gender</label>
        
-      <select id="input-test" class="form-control">
+      <select id="input-test" class="form-control" name="gender">
        <option> Male</option>
        <option> Female</option>
  
@@ -152,42 +177,41 @@
     </div>  
   <div class="form-group">
     <label for="input1" style="color: black;">Check the conditions that apply to you or to any members of your immediate relatives:</label>
-    <textarea type="text" class="form-control" id="input1" placeholder="add detail"></textarea>
+    <textarea type="text" class="form-control" name="c_condition" placeholder="add detail"></textarea>
   </div>
    <div class="form-group">
     <label for="input1" style="color: black;">Check the symptoms that you're currently experiencing:</label>
-    <textarea type="text" class="form-control" id="input2" placeholder="add detail"></textarea>
+    <textarea type="text" class="form-control" name="c_symptoms" placeholder="add detail"></textarea>
   </div>
    <div class="form-group">
     <label for="input3" style="color: black;">Are you currently taking any medication?</label>
-    <textarea type="text" class="form-control" id="input3" placeholder="add detail"></textarea>
+    <textarea type="text" class="form-control" name="c_medication" placeholder="add detail"></textarea>
   </div>
      <div class="form-group">
     <label for="input4" style="color: black;">Do you have any medication allergies ?</label>
-    <textarea type="text" class="form-control" id="input4" placeholder="add detail"></textarea>
+    <textarea type="text" class="form-control" name="c_allergies" placeholder="add detail"></textarea>
   </div>
        <div class="form-group">
     <label for="input5" style="color: black;">Do you use or do you have history of using tobacco ?</label>
-    <textarea type="text" class="form-control" id="input5" placeholder="add detail"></textarea>
+    <textarea type="text" class="form-control" name="c_tobbaco" placeholder="add detail"></textarea>
   </div>
   <div class="form-group">
     <label for="input6" style="color: black;">Do you use or do you have history of using illegal drugs ?</label>
-    <textarea type="text" class="form-control" id="input6" placeholder="add detail"></textarea>
+    <textarea type="text" class="form-control" name="c_drugs" placeholder="add detail"></textarea>
   </div>
   <div class="form-group">
     <label for="input7" style="color: black;">How often do you consume alcohol ?</label>
-    <textarea type="text" class="form-control" id="input7" placeholder="add detail"></textarea>
+    <textarea type="text" class="form-control" name="c_alcohol" placeholder="add detail"></textarea>
   </div>
-  </form>
+
              <div>
         <label for="terms_and_conditions" style="color: black;" >I agree to the Terms of Service of meditech lab:</label>
         <input type="checkbox" id="terms_and_conditions" value="1" onclick="terms_changed(this)" />
     </div>
     <div>
 
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" onclick="window.location.href = '../invoice/invoice.php';"  type="submit" id="submit_button"disabled>submit</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" name="medi_history_button" type="submit" id="submit_button"disabled>submit</button>
               <hr class="my-4">
-             
             
  </form>
           </div>

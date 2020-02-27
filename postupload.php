@@ -35,7 +35,7 @@ include('includes/navbar.php');
   	<div class="table-responsive">
       <?php
      include_once'includes/connection.php';
-     $query = "SELECT * FROM frontpost";
+     $query = "SELECT * FROM user";
      $query_run = mysqli_query($conn,$query);
 
       ?>
@@ -43,21 +43,10 @@ include('includes/navbar.php');
   <thead>
     <tr>
       <th scope="col">Id</th>
-       <th scope="col">first name</th>
+      <th scope="col">first name</th>
       <th scope="col">last name</th>
-         <th scope="col">address</th>
-         <th scope="col">phone number</th>
-         <th scope="col">Requested test</th>
-         <th scope="col">e-mail</th>
-         <th scope="col">status</th>
-         <th scope="col">allergies</th>
-         <th scope="col">weight</th>
-         <th scope="col">Blood group</th>
-
-  
-
-      
-      <th scope="col">EDIT</th>
+      <th scope="col">e-mail</th>
+      <th scope="col">password</th>
       <th scope="col">DELETE</th>
     </tr>
   </thead>
@@ -73,31 +62,12 @@ include('includes/navbar.php');
       
     <tr>
       
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-       <td> </td>
-          <td> </td>
-      <td> </td>
-      <td> </td>
-       <td> </td>
-          <td> </td>
-             <td> </td>
-     
-
-                <td>
-            <form action="frontpostedit.php" method="POST">
-              <input type="hidden" name="edit_id" value="<?php echo $row['id'];   ?>">
-              <input type="hidden" name="edit_heading" value="<?php echo $row['heading'];   ?>">
-               <input type="hidden" name="edit_post" value="<?php echo $row['post'];   ?>">
-               
-                 <input type="hidden" name="edit_post" value="<?php echo  '<img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" height="100" width="100"/';   ?>">
-              <input type="hidden" name="edit_link" value="<?php echo $row['link'];   ?>">
-
-                        </form>
-          </td>
-          <td>
+      <td><?php echo $row['id'];       ?>  </td>
+      <td><?php echo $row['first_name'];?>  </td>
+      <td><?php echo $row['last_name'];       ?>  </td>
+      <td><?php echo $row['email'];       ?>  </td>
+      <td><?php echo $row['password'];       ?>  </td>
+      <td>
           <form action="code.php" method="POST">
             <input type="hidden" name="delet_id"  value="<?php echo $row['id'];   ?>">
            <button type="submit" name="frontpost_deletbtn" class="btn btn-danger">DELETE</button> 

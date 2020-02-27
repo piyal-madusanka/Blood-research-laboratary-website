@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +18,7 @@
 <div class="container">
 
 <div class="page-header">
-    <h1>Mobile test invoice <small></small></h1>
+    <h1>Test invoice <small></small></h1>
 </div>
 
 <!-- Simple Invoice - START -->
@@ -33,12 +35,10 @@
                     <div class="panel panel-default height">
                         <div class="panel-heading">Billing Details</div>
                         <div class="panel-body">
-                            <strong>name:</strong><br>
-                            <strong>test name:</strong><br>
-                            <strong>Address:</strong><br>
-                             <strong>Requested pick up Date:</strong><br>
-                             <strong>Requested pick up time:</strong><br>
-
+                            <strong>name: <h4><?php echo  $_SESSION['invoice_name'];  ?></h4></strong><br>
+                            <strong>test name  : <h4>  Cryo presevation test</h4></strong><br>
+                            <strong>Address:<h4><?php echo  $_SESSION['destination'];  ?></h4></strong><br>
+                            
                           
                          
                         </div>
@@ -46,65 +46,25 @@
                 </div>
                 <div class="col-xs-12 col-md-6 col-lg-6">
                     <div class="panel panel-default height">
-                        <div class="panel-heading">Payment Information</div>
+                        <div class="panel-heading">Billing Details</div>
                         <div class="panel-body">
-                            <strong>testing payment:</strong> <br>
-                            <strong>Tranpotaion (per km):</strong> 
+                            <strong>testing payment  : <h4>  1000 Rs </h4></strong> <br>
+                             <strong>Requested pick up Date:<h4> <?php echo  $_SESSION['date'];  ?></h4></strong><br>
+                             <strong>Requested pick up time:<h4><?php echo  $_SESSION['time'];  ?></h4></strong><br>
+
+                            
                           
                         </div>
                     </div>
                 </div>
-               
+                <div><button class="btn-primary" onclick="alert('you are successfully registered for this test')" style="float: right;" >Confirm</button>
+                    
+                </div> 
+                <div><a href="../index.php"><button class="btn-info"> back to home</button></a> </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="text-center"><strong>Order summary</strong></h3>
-                </div>
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-condensed">
-                            <thead>
-                                <tr>
-                                    <td><strong>Test Name</strong></td>
-                                    <td class="text-center"><strong> Price</strong></td>
-                                    <td class="text-center"><strong> Quantity</strong></td>
-                                    <td class="text-right"><strong>Total</strong></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                             
-                                
-                               
-                                <tr>
-                                    <td class="highrow"></td>
-                                    <td class="highrow"></td>
-                                    <td class="highrow text-center"><strong>Subtotal</strong></td>
-                                    <td class="highrow text-right"></td>
-                                </tr>
-                                <tr>
-                                    <td class="emptyrow"></td>
-                                    <td class="emptyrow"></td>
-                                    <td class="emptyrow text-center"><strong>tranpotation</strong></td>
-                                    <td class="emptyrow text-right"></td>
-                                </tr>
-                                <tr>
-                                    <td class="emptyrow"><i class="fa fa-barcode iconbig"></i></td>
-                                    <td class="emptyrow"></td>
-                                    <td class="emptyrow text-center"><strong>Total</strong></td>
-                                    <td class="emptyrow text-right"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                           <div><button class="btn-primary" onclick="alert('you are successfully registered for this test')" style="float: right;" >Confirm</button></div> 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  
 </div>
 <div>
     

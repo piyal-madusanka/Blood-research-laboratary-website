@@ -1,3 +1,8 @@
+<?php 
+session_start();
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +46,7 @@
                         <div class="main-menu h-100">
                             <nav class="navbar h-100 navbar-expand-lg">
                                 <!-- Logo Area  -->
-                                <a class="navbar-brand" href="index.html"><img src="img/core-img/logo1.png" alt="Logo"></a>
+                                <a class="navbar-brand" href="index.php"><img src="img/core-img/logo1.png" alt="Logo"></a>
 
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#medicaMenu" aria-controls="medicaMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i> Menu</button>
 
@@ -99,9 +104,37 @@
                                              
                                             </div>
                                         </li>   
+                                           <li class="nav-item dropdown">
+                                            <a class="nav-link " href="profile.php" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-expanded="false"> <?php 
+                                               if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]!='')
+                                                         {
+                                                         echo '<h6>'.$_SESSION["logged_in"].'</h6>';
+                                                         
+                                                        } ?></a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="profile.php">visit profile</a>
+                                                <a class="dropdown-item" href="logout.php">logout</a>
+
+                                              
+                                             
+                                            </div>
+                                        </li>   
+                                      
                                           <li class="nav-item">
-                                            <a href="log/index.php" class="btn btn-primary">Sign in</a>
+                                             <?php 
+                      if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]!=''){ // I use false condition
+                        echo '<a href="logout.php"><button class="btn btn-danger">Sign out</button></a>';
+                     }else{
+
+                        echo '<a href="log/index.php"><button class="btn btn-primary">Sign in</button></a>';
+                     }
+
+
+                          ?>
+
                                         </li>
+
+                                       
                                     </ul>
                                  
                                    
@@ -168,5 +201,6 @@
                 </div>
             </div>
         </div>
+       
     </section>
     <!-- ***** Hero Area End ***** -->

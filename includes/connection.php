@@ -2,7 +2,7 @@
 $serverName="localhost";
 $username="root";
 $password="";
-$dbname="sldczone";
+$dbname="meditec";
 
 
 $conn=mysqli_connect($serverName,$username,$password,$dbname);

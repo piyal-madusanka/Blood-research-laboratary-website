@@ -140,7 +140,7 @@
   </tbody>
 </table>
     </p>
-      <a class="btn btn-primary">Ok</a>
+      <a href="../index.php" class="btn btn-primary">Ok</a>
   </div>
 </div>
 

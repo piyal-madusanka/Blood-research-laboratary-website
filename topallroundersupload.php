@@ -16,29 +16,48 @@ include('includes/navbar.php');
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="code.php"  method="POST" enctype="multipart/form-data">
+      <form  name="form" method="post" enctype="multipart/form-data" >
       <div class="modal-body">
-
-      	<div class="form-group">
-      		<label>User id</label>
-      		<input type="text" name="heading" class="form-control" placeholder="Enter Description" >
-        </div> 
             <div class="form-group">
-            <label>Report</label>
+            <label>Add Report</label>
             <br>
-       <input type="file" name="image" id="image" /> 
+       <input  type="file" name="my_file"  /> 
            </div>
       	
-
+           
       	 </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" name="topallrounderspostuploadbtn" id="postuploadbtn" value="postuploadbtn" >Save changes</button>
+        <input type="submit"  name="submit" value="Upload"/>
+ 
+       
       </div>
       </form>
+      
       </div>
   </div>
 </div>
+<?php
+//upload files
+if (($_FILES['my_file']['name']!="")){
+// Where the file is going to be stored
+  $target_dir = "frontend/new/upload/";
+  $file = $_FILES['my_file']['name'];
+  $path = pathinfo($file);
+  $filename = $path['filename'];
+  $ext = $path['extension'];
+  $temp_name = $_FILES['my_file']['tmp_name'];
+  $path_filename_ext = $target_dir.$filename.".".$ext;
+ 
+// Check if file already exists
+if (file_exists($path_filename_ext)) {
+ //echo "Sorry, file already exists.";
+ }else{
+ move_uploaded_file($temp_name,$path_filename_ext);
+ echo "Congratulations! File Uploaded Successfully.";
+ }
+}
+?>
 	<div class="card shadow-mb-4">
 		<div class="card-header py-3 ">
 			<h6 class="m-0 front-weight-bolt text-primary">Medical Reports
@@ -48,109 +67,7 @@ include('includes/navbar.php');
 			</h6>
 			
 		</div>
-  <div class="card-body">
-    <?php 
-     if(isset($_SESSION['success']) && $_SESSION['success']!=''){
-      
-        echo '<h2>'.$_SESSION['success'].'</h2>';
-        unset($_SESSION['success']);
 
-      }
-      if(isset($_SESSION['status']) && $_SESSION['status']!=''){
-      
-        echo '<h2 class"bg-info">'.$_SESSION['status'].'</h2>';
-        unset($_SESSION['status']);  
-     } 
-
-
-
-     ?>
-  	<div class="table-responsive">
-      <?php
-     include_once'includes/connection.php';
-     $query = "SELECT * FROM topallrounderspost";
-     $query_run = mysqli_query($conn,$query);
-
-      ?>
-  		<table class="table table-bodered" id="datatable" width="100%" cellspacing="0">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-        <th scope="col">first name</th>
-      <th scope="col">last name</th>
-         <th scope="col">address</th>
-         <th scope="col">phone number</th>
-         <th scope="col">Requested test</th>
-         <th scope="col">e-mail</th>
-         <th scope="col">status</th>
-         <th scope="col">allergies</th>
-         <th scope="col">weight</th>
-         <th scope="col">Report</th>
-     
-      
-   
-      <th scope="col">DELETE</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php
- 
-    if(mysqli_num_rows($query_run )>0)
-    {
-      while ($row=mysqli_fetch_assoc($query_run )) 
-      {
-      
-       ?>
-      
-    <tr>
-      
-      <td><?php echo $row['id'];       ?>  </td>
-      <td><?php echo $row['heading']; ?>  </td>
-      <td><?php echo $row['post']; ?>  </td>
-      <td><?php echo  '<img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" height="100" width="100"/>';     ?>  </td>
-       <td><?php echo $row['name']; ?>  </td>
-    <td><?php echo $row['category']; ?>  </td>
-    <td><?php echo $row['place']; ?>  </td>
-    <td><?php echo $row['innings']; ?>  </td>
-    <td><?php echo $row['totalscore']; ?>  </td>
-    <td><?php echo $row['highscore']; ?>  </td>
-    <td><?php echo $row['average']; ?>  </td>
-    <td><?php echo $row['rate']; ?>  </td>
-
-                <td>
-            <form action="topallroundersedit.php" method="POST">
-              <input type="hidden" name="edit_id" value="<?php echo $row['id'];   ?>">
-           
-            <button type="submit" name="upcomingeventspost_edit_btn" class="btn btn-success">EDIT</button> 
-            </form>
-          </td>
-          <td>
-          <form action="code.php" method="POST">
-            <input type="hidden" name="delet_id"  value="<?php echo $row['id'];   ?>">
-           <button type="submit" name="topallrounderspost_deletbtn" class="btn btn-danger">DELETE</button> 
-           </form>
-
-           </td>
-     
-      
-    </tr>
-       <?php  
-     }
-    
-   }
-   else{
-    echo "No record found";
-   }
-
-
-      ?>
-   
-  </tbody>
-</table>
-  		
-  	</div>
-   
-  </div>
 </div>
 
 <?php

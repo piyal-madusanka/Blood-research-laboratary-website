@@ -1,3 +1,7 @@
+<?php 
+session_start();
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +44,7 @@
         aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
       
       </button>
-      <a class="navbar-brand" href="index.html"><img src="logo1.png" alt="Logo"></a>
+      <a class="navbar-brand" href="../index.php"><img src="logo1.png" alt="Logo"></a>
       <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
         data-target="#navbarTogglerDemo01" aria-expanded="false">
         <span class="fa fa-search" aria-hidden="true"></span>
@@ -51,8 +55,16 @@
             <a class="nav-link active" href="../index.php">Home</a>
           </li>
         
-         <li class="nav-item">
-            <a class="nav-link" href="../about-us.php">About Us</a>
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+           Our lab
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../about-us.php">About us</a>
+              <a class="dropdown-item" href="../lab-quality.php">Our quality</a>
+             
+          </div>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -65,25 +77,72 @@
               <a class="dropdown-item" href="../Cryo3.php">processing Technology</a>
           </div>
           </li>
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+     Test directory
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../tests.php">Common Tests</a>
+              <a class="dropdown-item" href="../alltests.php">All Tests</a>
+             
+          </div>
+          </li>
 
+       <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+     Prepare for Tests
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="prepare-test.php">Serology</a>
+              <a class="dropdown-item" href="prepare-test2.php">Microbiology</a>
+             
+          </div>
+          </li>
+           
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-           Test Directory
+     Contact us
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="../tests.php">list of tests</a>
+              <a class="dropdown-item" href="../contact.php">send message</a>
+              <a class="dropdown-item" href="../feedback/feedback.php">send feedback</a>
+             
           </div>
           </li>
-            <li class="nav-item">
-            <a class="nav-link" href="prepare-test.php">Prepare for Test</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../contact.php">Contact</a>
+
+           <li class="nav-item dropdown">
+            <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <?php 
+              if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]!='')
+                      {
+                       echo '<h6>'.$_SESSION["logged_in"].'</h6>';
+                      }
+              ?>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../profile.php">visit profile</a>
+              <a class="dropdown-item" href="../logout.php">logout</a>
+             
+          </div>
           </li>
 
           <li class="nav-item ">
-            <a href="../log/index.php" class="btn btn-primary">Sign in</a>
+              <?php 
+                      if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]!=''){ // I use false condition
+                        echo '<a href="../logout.php"><button class="btn btn-danger">Sign out</button></a>';
+                     }else{
+
+                        echo '<a href="../log/index.php"><button class="btn btn-primary">Sign in</button></a>';
+                     }
+
+
+                          ?>
+
+            
       
           </li>
           
@@ -93,12 +152,11 @@
     </div>
   </nav>
   <!--/ Nav End /-->
-
-  <br>
   <br>
    <br>
-  <br>
-  <br>
+    <br>
+     <br>
+
 <hr style="   border-top: 3px double #8c8b8b;">
  
 
@@ -112,11 +170,13 @@
               <img class="card-img-top" src="img/mobile_unit.jpg" alt="Card image cap">
              <div class="card-body">
                <h4 class="card-title"><a><h4>Contact Mobile Unit</h4></a></h4>
-               <p class="card-text" style="color: black;">Visits homes and nursing homes anywhere in Gampaha
-Visit Mon Day, Wednesday,Saturday (even holidays) between 8 am and 8 pm
-Accept payment via cash, credit card, cheque 
-Upload the reports to the web page 
-Email or fax the reports to you when feasible</p>
+               <p class="card-text" style="color: black;"> * At home tests anywhere in Gampaha <br>
+* Visit Monday, Wednesday,Saturday (even holidays) between 8 am and 8 pm<br>
+* Accept payment via cash, cheque<br> 
+* Upload the reports to the web page <br>
+* Email or fax the reports to you when feasible<br>
+* Contact : 077 123 0153
+</p>
            
     </div>
   </div>
@@ -130,7 +190,7 @@ Email or fax the reports to you when feasible</p>
                <br>
                <br>
                <br>
-            <a href="../booking/booking.php" class="btn btn-primary">Register</a>
+            <a href="../login-check/check_login2.php" class="btn btn-primary">Register</a>
     </div>
   </div>
 </div>         
@@ -140,7 +200,7 @@ Email or fax the reports to you when feasible</p>
              <div class="card-body">
                <h4 class="card-title"><a><h4>Submit inqueries</h4></a></h4>
                <p class="card-text" style="color: black;">if you have any complains or any doubts about our servise please send us </p>
-            <a href="#" class="btn btn-primary">Submit</a>
+            <a href="../contact.php" class="btn btn-primary">Submit</a>
     </div>
   </div>
 </div>   

@@ -10,7 +10,7 @@
                             <div class="footer-logo">
                                 <img src="img/core-img/logo1.png" alt="">
                             </div>
-                            <p>We are a leading brand in private healthcare in Sri Lanka. Our people are some of the most dedicated, skilled and experienced healthcare providers and medical experts in the country. They are adept at using many of the most cutting-edge medical equipment and technology in the industry. </p>
+                            <p>We are a leading brand in private healthcare in Sri Lanka. Our people are some of the most dedicated, skilled and experienced healthcare providers and medical experts in the country. They are adopt at using many of the most cutting-edge medical equipment and technology in the industry. </p>
                         
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                             </div>
                             <ul>
                                 <li><a href="index.php">Home</a></li>
-                                <li><a href="tests.php">List of tests</a></li>
+                                <li><a href="privacy.php">Privacy And Policy</a></li>
                                 <li><a href="new/prepare-test.php">Prepare for test</a></li>
                                 <li><a href="new/online-report.php">Get lab report online</a></li>
                                 <li><a href="about-us.php">About Laboratary</a></li>

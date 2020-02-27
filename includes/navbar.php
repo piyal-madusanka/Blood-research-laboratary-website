@@ -2,7 +2,7 @@
    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
   <div class="sidebar-brand-icon rotate-n-15">
     <i class="fas fa-laugh-wink"></i>
   </div>
@@ -50,7 +50,55 @@
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages118" aria-expanded="true" aria-controls="collapsePages">
+    <i class="fas fa-fw fa-folder"></i>
+    <span>Genarate reports</span>
+  </a>
 
+  <div id="collapsePages118" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+     <a class="collapse-item" href="reports/WebUser.php">create registered users <br> report </a>
+    
+    </div>
+  </div>
+    <div id="collapsePages118" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+     <a class="collapse-item" href="reports/cryoregister.php">create registered cryo <br> presevation test users <br> report part 1 </a>
+    
+    </div>
+  </div>
+      <div id="collapsePages118" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+     <a class="collapse-item" href="reports/cryoregister2.php">create registered cryo <br> presevation test users <br> report part 2 </a>
+    
+    </div>
+  </div>
+        <div id="collapsePages118" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+     <a class="collapse-item" href="reports/cryohistory1.php">create registered cryo <br> presevation test users <br>Medical history <br> report part 1 </a>
+    
+    </div>
+  </div>
+         <div id="collapsePages118" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+     <a class="collapse-item" href="reports/cryohistory2.php">create registered cryo <br> presevation test users <br>Medical history <br> report part 2 </a>
+    
+    </div>
+  </div>
+      <div id="collapsePages118" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+     <a class="collapse-item" href="reports/samplestatus.php">Clients blood sample status <br> Report </a>
+    
+    </div>
+  </div>
+     <div id="collapsePages118" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+     <a class="collapse-item" href="reports/mobileregister.php">Mobile test register user <br> Report </a>
+    
+    </div>
+  </div>
+</li>
 
 
 <li class="nav-item">
@@ -77,6 +125,37 @@
     
     </div>
   </div>
+    <div id="collapsePages24" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+     <a class="collapse-item" href="showusermedihistory.php">show user medical history</a>
+    
+    </div>
+  </div>
+      <div id="collapsePages24" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+     <a class="collapse-item" href="cryouserpicup.php">show users pic up details</a>
+    
+    </div>
+  </div>
+  </li>
+    <li class="nav-item">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages251" aria-expanded="true" aria-controls="collapsePages">
+    <i class="fas fa-fw fa-folder"></i>
+    <span>Ambulance controll</span>
+  </a>
+   <div id="collapsePages251" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+     <a class="collapse-item" href="ambulance_check1.php">cryo test ambulance</a>
+    
+    </div>
+  </div>
+      <div id="collapsePages251" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+     <a class="collapse-item" href="ambulance_check2.php">mobile test ambulance</a>
+    
+    </div>
+  </div>
+
   </li>
   <li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages25" aria-expanded="true" aria-controls="collapsePages">
@@ -105,11 +184,11 @@
       <li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages236" aria-expanded="true" aria-controls="collapsePages">
     <i class="fas fa-fw fa-folder"></i>
-    <span>User medical histories</span>
+    <span>Sample status</span>
   </a>
    <div id="collapsePages236" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-     <a class="collapse-item" href="#">Show history</a>
+     <a class="collapse-item" href="addsamplestatus.php">Add sample status</a>
     
     </div>
   </div>
@@ -134,6 +213,7 @@
 
   
   <!-- Logout Modal-->
+
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

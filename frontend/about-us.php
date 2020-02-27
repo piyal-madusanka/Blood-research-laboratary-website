@@ -2,7 +2,7 @@
 
 
 <?php
-include("header.php");
+include("headerh.php");
 
   ?>
 
@@ -18,7 +18,9 @@ include("header.php");
 </div>
                 
                 </div>
-                <div class="col-12 col-lg-7">
+                <div class="col-12 col-lg-1"></div>
+                <div class="col-12 col-lg-6">
+
                     <div class="medica-about-text">
                        
                         <p>With a long standing history over 20 years,C.R Medi Tech Lab was founded by Dr. R.A.U.C Ranahinghe. From the beginning of the lab the main objective is to provide high quality laboratory  at affordable price for the community. At present Medi Tech Lab enjoys the trust and renowed among the community of Gampaha district as a reliable medical service provider with reasonable rates.

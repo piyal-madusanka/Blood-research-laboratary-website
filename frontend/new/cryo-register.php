@@ -1,3 +1,7 @@
+<?php 
+session_start();
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +44,7 @@
         aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
       
       </button>
-      <a class="navbar-brand" href="index.html"><img src="logo1.png" alt="Logo"></a>
+      <a class="navbar-brand" href="../index.php"><img src="logo1.png" alt="Logo"></a>
       <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
         data-target="#navbarTogglerDemo01" aria-expanded="false">
         <span class="fa fa-search" aria-hidden="true"></span>
@@ -51,8 +55,16 @@
             <a class="nav-link active" href="../index.php">Home</a>
           </li>
         
-         <li class="nav-item">
-            <a class="nav-link" href="../about-us.php">About Us</a>
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+           Our lab
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../about-us.php">About us</a>
+              <a class="dropdown-item" href="../lab-quality.php">Our quality</a>
+             
+          </div>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -65,25 +77,72 @@
               <a class="dropdown-item" href="../Cryo3.php">processing Technology</a>
           </div>
           </li>
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+     Test directory
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../tests.php">Common Tests</a>
+              <a class="dropdown-item" href="../alltests.php">All Tests</a>
+             
+          </div>
+          </li>
 
+       <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+     Prepare for Tests
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="prepare-test.php">Serology</a>
+              <a class="dropdown-item" href="prepare-test2.php">Microbiology</a>
+             
+          </div>
+          </li>
+           
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-           Test Directory
+     Contact us
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="../tests.php">list of tests</a>
+              <a class="dropdown-item" href="../contact.php">send message</a>
+              <a class="dropdown-item" href="../feedback/feedback.php">send feedback</a>
+             
           </div>
           </li>
-            <li class="nav-item">
-            <a class="nav-link" href="prepare-test.php">Prepare for Test</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../contact.php">Contact</a>
+
+           <li class="nav-item dropdown">
+            <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <?php 
+              if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]!='')
+                      {
+                       echo '<h6>'.$_SESSION["logged_in"].'</h6>';
+                      }
+              ?>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../profile.php">visit profile</a>
+              <a class="dropdown-item" href="../logout.php">logout</a>
+             
+          </div>
           </li>
 
           <li class="nav-item ">
-            <a href="../log/index.php" class="btn btn-primary">Sign in</a>
+              <?php 
+                      if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]!=''){ // I use false condition
+                        echo '<a href="../logout.php"><button class="btn btn-danger">Sign out</button></a>';
+                     }else{
+
+                        echo '<a href="../log/index.php"><button class="btn btn-primary">Sign in</button></a>';
+                     }
+
+
+                          ?>
+
+            
       
           </li>
           
@@ -95,9 +154,20 @@
   <!--/ Nav End /-->
 
 
+<hr style="   border-top: 3px double #8c8b8b;">
+  <!--/ Nav End /-->
+
+
 
 <hr style="   border-top: 3px double #8c8b8b;">
-  <div></div>
+  <div>  <?php 
+              if(isset($_SESSION["not_working"]) && $_SESSION["not_working"]!='')
+                      {
+                       echo '<h6>'.$_SESSION["not_working"].'</h6>';
+                      }
+          ?>
+                        
+                      </div>
   <br>
   <br>
   <br>
@@ -107,60 +177,58 @@
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
+
             <h5 class="card-title text-center">Express Enrollment</h5>
-            <form class="form-signin">
-             <form>
+
+
+<form class="form-signin" action="../code.php" method="POST">
+             
  
-  <div class="form-row">
+  
      
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-12">
       <label for="inputEmail4" style="color: black;">first name</label>
-      <input type="text" class="form-control" id="inputEmail4" placeholder="first name">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4" style="color: black;">last name</label>
-      <input type="e-mail" class="form-control" id="inputPassword4" placeholder="last name">
+      <input type="text" class="form-control" name="first" placeholder="first name" required>
     </div>
     <div class="form-group col-md-12">
-      <label for="inputEmail4" style="color: black;">test name</label>
-      <input type="text" class="form-control" id="inputEmail4" placeholder="test name">
+      <label for="inputPassword4" style="color: black;">last name</label>
+      <input type="text" class="form-control" name="last" placeholder="last name">
     </div>
-  </div>
-   <div class="form-group">
+   <div class="form-group col-md-12">
 
     <label for="inputAddress" style="color: black;">Email Address</label>
-    <input type="text-area" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    <input type="email" class="form-control" name="email" placeholder="E-mail" required="email">
   </div>
-  <div class="form-group">
+  <div class="form-group col-md-12">
     <label for="inputAddress" style="color: black;">Address</label>
-    <input type="text-area" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    <input type="text" class="form-control" name="address" placeholder="1234 Main St" required>
   </div>
-  <div class="form-group">
+  <div class="form-group col-md-12">
     <label for="inputAddress2" style="color: black;">Phone number</label>
-    <input type="phone" class="form-control" id="inputAddress2" placeholder="mobile or land phone">
+    <input type="number" class="form-control" name="phone" placeholder="mobile or land phone" required>
   </div>
-   <div class="form-group">
+   <div class="form-group col-md-12">
     <label for="inputAddress2" style="color: black;">status</label>
-    <textarea class="form-control" placeholder="status" ></textarea>
+    <textarea type="text" class="form-control" name="status" placeholder="status" required></textarea >
   </div>
-   <div class="form-group">
+   <div class="form-group col-md-12">
     <label for="inputAddress2" style="color: black;">Allergies</label>
-    <textarea class="form-control" placeholder="allergies" ></textarea>
+    <textarea type="text" class="form-control" name="allergies" placeholder="allergies" required ></textarea>
   </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
+
+  
+    <div class="form-group col-md-12">
       <label for="inputEmail4" style="color: black;">Blood Group</label>
-      <input type="text" class="form-control" id="inputEmail4" placeholder="Blood Group ">
+      <input type="text" class="form-control" name="blood" placeholder="Blood Group " required>
     </div>
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-12">
       <label for="inputPassword4" style="color: black;">Weight</label>
-      <input type="text" class="form-control" id="inputPassword4" placeholder="Weight">
+      <input type="text" class="form-control" name="weight" placeholder="Weight" required>
     </div>
-  </div>
+  
   
  
-</form>
-        <input type="button" class="btn btn-lg btn-primary btn-block text-uppercase" onclick="window.location.href = 'medi-history.php';" value="Submit"/>
+      <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase" name="Cryopresevbutton">submit</button>
               <hr class="my-4">
             </form>
           </div>

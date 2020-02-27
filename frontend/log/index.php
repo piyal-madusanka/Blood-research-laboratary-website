@@ -1,3 +1,7 @@
+
+<?php
+session_start();
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,21 +36,55 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="../code.php" method="POST">
 					<span class="login100-form-title p-b-43">
-						Login to continue
+						<?php 
+
+                        
+						 if(isset($_SESSION["wrong"]) && $_SESSION["wrong"]!='')
+                      {
+      
+                          echo '<h2 class"bg-info">'.$_SESSION["wrong"].'</h2>';
+
+                        }
+
+                          
+
+						 if(isset($_SESSION["user"]) && $_SESSION["user"]!='')
+                      {
+      
+                          echo '<h2 class"bg-info">'.$_SESSION["user"].'</h2>';
+                          unset($_SESSION["user"]);  
+                      }elseif (isset($_SESSION["invalid1"]) && $_SESSION["invalid1"]!='') {
+
+                      	   echo '<h2 class"bg-info">'.$_SESSION["invalid1"].'</h2>';
+                         
+                      }elseif (isset($_SESSION["invalid2"]) && $_SESSION["invalid2"]!='') {
+
+                      	   echo '<h2 class"bg-info">'.$_SESSION["invalid2"].'</h2>';
+                         
+                      }elseif (isset($_SESSION["invalid3"]) && $_SESSION["invalid3"]!='') {
+
+                      	   echo '<h2 class"bg-info">'.$_SESSION["invalid3"].'</h2>';
+                         
+                      }        
+
+
+                       ?>
+
+						please Login to continue
 					</span>
 					
 					
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email">
+						<input class="input100" type="text" name="name_reg">
 						<span class="focus-input100"></span>
-						<span class="label-input100">Email</span>
+						<span class="label-input100">name</span>
 					</div>
 					
 					
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass">
+						<input class="input100" type="password" name="pass_reg">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Password</span>
 					</div>
@@ -68,7 +106,7 @@
 			
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"  onclick="window.location.href = '../profile.php';">
+						<button class="login100-form-btn" type="submit" name="loginbutton">
 							Login
 						</button>
 					</div>

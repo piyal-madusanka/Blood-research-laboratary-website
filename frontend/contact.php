@@ -1,6 +1,6 @@
 
 <?php
-include("header.php");
+include("headerh.php");
 
   ?>
     <section class="breadcumb-area bg-img gradient-background-overlay" style="background-image: url(img/bg-img/hero5.jpg);">
@@ -59,7 +59,7 @@ include("header.php");
                         <div class="medica-emergency-card mb-4">
                             <h5>For Emergencies</h5>
                             <h4>033 5625 512</h4>
-                            <p class="mb-0">We have a 24 hour operating system and you can contact us anytime you want from telephone.</p>
+                            <p class="mb-0">We are operating monday to saturday between 8.00 am to 8.00 pm.You can contact us anytime .</p>
                         </div>
                         <!-- Medica Appointment Card -->
                         <div class="medica-contact-card">
